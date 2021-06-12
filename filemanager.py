@@ -1,13 +1,13 @@
 class FileManager:
-    def __init__(self, file_path):
-        self.file_path = file_path
+    # def __init__(self, file_path):
+    #     self.file_path = file_path
 
-    def read_file(self):
-        with open(self.file_path) as file:
+    def read_file(self, file_path):
+        with open(file_path) as file:
             return file.read()
 
-    def split_file(self, parts):
-        content = self.read_file()
+    def split_file(self, parts, file_path):
+        content = self.read_file(file_path)
         chunk_size = int(len(content) / parts) + 1
         content_in_chunks = []
         chunk_content = ""
@@ -24,7 +24,7 @@ class FileManager:
 
         return content_in_chunks
 
-
-# f = FileManager('data.txt')
-# f.read_file()
-# f.split_file(3)
+    def save_txt(self, content, file_path):
+        file = open(file_path, "w")
+        file.write(str(content))
+        file.close()
